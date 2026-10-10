@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sukanya Dasgupta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: Apple product-page rhythm — translucent sticky nav, centered headline stacks, grey bento tiles, one full-bleed black band. */
+:root{
+  --bg:#ffffff;
+  --tile:#f5f5f7;
+  --fg:#1d1d1f;
+  --muted:#6e6e73;
+  --line:#d2d2d7;
+  --accent:#0066cc;
+  --accent-btn:#0071e3;
+  --nav:rgba(251,251,253,.8);
+  --band-bg:#000000;
+  --band-tile:#1d1d1f;
+  --band-fg:#f5f5f7;
+  --band-muted:#a1a1a6;
+  --grad-a:#2997ff; --grad-b:#a35bff; --grad-c:#ff6a3d;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Inter",Helvetica,Arial,sans-serif;
+  --maxw:1000px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#000000;--tile:#161617;--fg:#f5f5f7;--muted:#a1a1a6;--line:#424245;
+  --accent:#2997ff;--accent-btn:#0071e3;--nav:rgba(22,22,23,.8);
+  --band-bg:#101012;--band-tile:#1d1d1f;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#000000;--tile:#161617;--fg:#f5f5f7;--muted:#a1a1a6;--line:#424245;
+  --accent:#2997ff;--accent-btn:#0071e3;--nav:rgba(22,22,23,.8);
+  --band-bg:#101012;--band-tile:#1d1d1f;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:17px;line-height:1.47;letter-spacing:-.022em;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.03em}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:22px}
+
+/* Nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--nav);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid color-mix(in srgb,var(--line) 50%,transparent)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:48px}
+.nav .brand{font-weight:600;font-size:19px;color:var(--fg)}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:12px}
+.nav ul a{color:var(--fg);opacity:.8}
+.nav ul a:hover{opacity:1;text-decoration:none}
+.nav .cta{font-size:12px;background:var(--accent-btn);color:#fff;padding:4px 12px;border-radius:980px}
+.nav .cta:hover{text-decoration:none;filter:brightness(1.1)}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* Hero */
+.hero{text-align:center;padding-block:88px 72px}
+.eyebrow{font-size:21px;font-weight:600;color:var(--muted);letter-spacing:-.01em}
+.hero h1{font-size:clamp(44px,8vw,88px);font-weight:700;line-height:1.04;margin-top:10px}
+.grad{background:linear-gradient(90deg,var(--grad-a),var(--grad-b) 55%,var(--grad-c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{font-size:clamp(19px,2.4vw,24px);color:var(--muted);max-width:680px;margin:22px auto 0;line-height:1.35;font-weight:500}
+.links{display:flex;justify-content:center;flex-wrap:wrap;gap:16px 30px;margin-top:30px;font-size:19px}
+.btn{background:var(--accent-btn);color:#fff;padding:11px 22px;border-radius:980px}
+.btn:hover{text-decoration:none;filter:brightness(1.1)}
+.links .more{padding:11px 0}
+.chev::after{content:" ›";font-size:1.15em}
+.creds{margin-top:34px;display:flex;justify-content:center;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted)}
+.creds span{border:1px solid var(--line);padding:4px 12px;border-radius:980px}
+
+/* Section heads */
+section{padding-block:72px}
+.head{text-align:center;max-width:760px;margin:0 auto 44px}
+.head h2{font-size:clamp(34px,5.5vw,56px);font-weight:700;line-height:1.07}
+.head p{font-size:clamp(17px,2vw,21px);color:var(--muted);margin-top:14px}
+
+/* Bento stats */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tile{background:var(--tile);border-radius:28px;padding:32px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.tile .k{font-size:14px;font-weight:600;color:var(--muted)}
+.tile .n{font-size:clamp(48px,7vw,80px);font-weight:700;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.tile .d{font-size:17px;color:var(--fg);max-width:34ch}
+.s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}
+.tile.hero-tile{background:linear-gradient(135deg,color-mix(in srgb,var(--grad-a) 16%,var(--tile)),color-mix(in srgb,var(--grad-b) 14%,var(--tile)))}
+@media (max-width:860px){.bento{grid-template-columns:1fr 1fr}.s2,.s3{grid-column:span 1}.s4{grid-column:span 2}}
+@media (max-width:520px){.bento{grid-template-columns:1fr}.s2,.s3,.s4{grid-column:span 1}.tile{padding:26px}}
+
+/* Black band */
+.band{background:var(--band-bg);color:var(--band-fg)}
+.band .head p{color:var(--band-muted)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px}
+.skill{background:var(--band-tile);border-radius:24px;padding:30px;min-width:0}
+.skill .tag{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(90deg,var(--grad-a),var(--grad-b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.skill h3{font-size:24px;font-weight:600;margin-top:10px;line-height:1.17}
+.skill p{color:var(--band-muted);margin-top:10px;font-size:16px}
+.skill b{color:var(--band-fg);font-weight:600}
+
+/* Experience */
+.roles{display:flex;flex-direction:column;gap:16px}
+.role{background:var(--tile);border-radius:28px;padding:36px;display:grid;grid-template-columns:220px 1fr;gap:28px}
+.role .when{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.role .co{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.role .place{font-size:14px;color:var(--muted);margin-top:6px}
+.role .body{min-width:0;display:flex;flex-direction:column;gap:22px}
+.pos h3{font-size:21px;font-weight:600}
+.pos .meta{font-size:14px;color:var(--muted);margin-top:2px;font-variant-numeric:tabular-nums}
+.pos > p{margin-top:10px;color:var(--fg)}
+.pos ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.pos li{position:relative;padding-left:20px;color:var(--muted);font-size:16px}
+.pos li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.pos li strong{color:var(--fg);font-weight:600}
+.pos + .pos{border-top:1px solid var(--line);padding-top:22px}
+.new{display:inline-block;font-size:12px;font-weight:600;color:#bf4800;margin-left:8px;letter-spacing:0}
+:root[data-theme="dark"] .new{color:#ff9f0a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .new{color:#ff9f0a}}
+@media (max-width:760px){.role{grid-template-columns:1fr;gap:18px;padding:28px}}
+
+/* How I work */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+.card{background:var(--tile);border-radius:28px;padding:34px;min-width:0}
+.card h3{font-size:24px;font-weight:600}
+.card > p{color:var(--muted);margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{background:var(--bg);border:1px solid var(--line);border-radius:980px;padding:7px 15px;font-size:15px}
+.quote{font-size:clamp(24px,3.4vw,34px);font-weight:600;line-height:1.2;letter-spacing:-.025em;text-align:center;max-width:820px;margin:64px auto 0;text-wrap:balance}
+.quote span{color:var(--muted)}
+
+/* Credentials */
+.list{list-style:none;margin:18px 0 0;padding:0}
+.list li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.list li:first-child{border-top:0}
+.list .t{font-weight:500}
+.list .s{color:var(--muted);font-size:15px;text-align:right;flex-shrink:0}
+.list .sub{display:block;color:var(--muted);font-size:15px;font-weight:400}
+
+/* Contact */
+.contact{text-align:center}
+.contact h2{font-size:clamp(40px,7vw,72px);font-weight:700;line-height:1.05}
+.contact .lede{font-size:21px;color:var(--muted);max-width:640px;margin:18px auto 0}
+.open{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:28px}
+.open span{background:var(--tile);border-radius:980px;padding:9px 18px;font-size:16px;font-weight:500}
+.mail{display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:36px;font-size:clamp(19px,3vw,26px);font-weight:600}
+.mail .addr{user-select:all;word-break:break-all}
+.copy{font:inherit;font-size:15px;font-weight:500;background:var(--accent-btn);color:#fff;border:0;border-radius:980px;padding:9px 18px;cursor:pointer}
+.copy:hover{filter:brightness(1.1)}
+.contact .links{margin-top:22px}
+
+footer{border-top:1px solid var(--line);padding-block:22px;font-size:12px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* Gentle entrance from a visible resting state */
+@keyframes rise{from{transform:translateY(14px);opacity:.001}to{transform:none;opacity:1}}
+.hero > *{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero > *:nth-child(2){animation-delay:.08s}.hero > *:nth-child(3){animation-delay:.16s}.hero > *:nth-child(4){animation-delay:.24s}.hero > *:nth-child(5){animation-delay:.32s}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Sukanya Dasgupta</a>
+    <ul>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#strengths">Strengths</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+    </ul>
+    <a class="cta" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero wrap">
+    <p class="eyebrow">Program Manager · Solventum · Bengaluru</p>
+    <h1>Move fast.<br><span class="grad">Stay in control.</span></h1>
+    <p class="lede">I build the operating backbone behind large technology programmes: the governance, delivery frameworks and real-time decision data that let engineering and product teams ship without losing their grip.</p>
+    <div class="links">
+      <a class="btn" href="#contact">Get in touch</a>
+      <a class="more chev" href="https://www.linkedin.com/in/sukanyadg" target="_blank" rel="noopener">View LinkedIn</a>
+    </div>
+    <div class="creds" aria-label="Credentials"><span>CSPO</span><span>PSPO I</span><span>PMP in progress</span><span>9.5+ years</span></div>
+  </header>
+
+  <section id="impact" class="wrap" aria-labelledby="impact-h">
+    <div class="head">
+      <h2 id="impact-h">The numbers.</h2>
+      <p>Big 4 consulting, direct programme ownership at Amazon Alexa, and a startup built from zero.</p>
+    </div>
+    <div class="bento">
+      <div class="tile hero-tile s4">
+        <span class="k">Global IT portfolio governed at KPMG</span>
+        <span class="n">$50M+</span>
+        <span class="d">Across 45+ programmes in cybersecurity, upstream digital and enterprise transformation for a global energy client.</span>
+      </div>
+      <div class="tile s2">
+        <span class="k">Annual budget variance</span>
+        <span class="n">&lt;1%</span>
+        <span class="d">Held through structured forecasting and variance controls.</span>
+      </div>
+      <div class="tile s2">
+        <span class="k">Faster escalations</span>
+        <span class="n">~40%</span>
+        <span class="d">Weekly manual reports replaced with a live Power BI view for 12+ teams.</span>
+      </div>
+      <div class="tile s2">
+        <span class="k">Fewer open critical risks</span>
+        <span class="n">30%</span>
+        <span class="d">In the first two quarters of a new RAID framework.</span>
+      </div>
+      <div class="tile s2">
+        <span class="k">Quicker programme setup</span>
+        <span class="n">~25%</span>
+        <span class="d">PMO models that became reference designs in the practice.</span>
+      </div>
+      <div class="tile s3">
+        <span class="k">Amazon Alexa launches owned</span>
+        <span class="n">7</span>
+        <span class="d">Across 4 regions, with zero critical post-launch incidents.</span>
+      </div>
+      <div class="tile s3">
+        <span class="k">Delivery ecosystem planned</span>
+        <span class="n">200+</span>
+        <span class="d">FTEs, with resource utilisation up ~15% through capacity modelling.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="strengths" class="band" aria-labelledby="str-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="str-h">What I do well.</h2>
+        <p>Comfortable in a CIO's quarterly review and a delivery standup on the same day.</p>
+      </div>
+      <div class="skills">
+        <article class="skill">
+          <span class="tag">Portfolio governance</span>
+          <h3>Large portfolios, tight budgets.</h3>
+          <p>Forecasting and investment tracking across <b>45+ programmes</b>, keeping spend within <b>1%</b> of plan.</p>
+        </article>
+        <article class="skill">
+          <span class="tag">PMO &amp; DTO design</span>
+          <h3>I design PMOs, not just run them.</h3>
+          <p>Governance models, escalation paths and RAID frameworks built from scratch for <b>3 transformation programmes</b>.</p>
+        </article>
+        <article class="skill">
+          <span class="tag">Data storytelling</span>
+          <h3>Dashboards executives actually use.</h3>
+          <p>Power BI suites that turned weekly CIO reporting into a <b>near-real-time</b> view of financials, milestones and risk.</p>
+        </article>
+        <article class="skill">
+          <span class="tag">End-to-end delivery</span>
+          <h3>From beta to go-live.</h3>
+          <p>Alexa beta governance, a Primavera P6 to SAP migration with <b>zero data loss</b>, and intranet modernisation, all on time and on budget.</p>
+        </article>
+        <article class="skill">
+          <span class="tag">Stakeholder alignment</span>
+          <h3>Getting 20+ leaders to a decision.</h3>
+          <p>Facilitated <b>15+ board-level decision gates</b> that sped up funding for 6 strategic programmes.</p>
+        </article>
+        <article class="skill">
+          <span class="tag">Cybersecurity programmes</span>
+          <h3>Security work, governed well.</h3>
+          <p>Oversaw <b>10+ workstreams</b> in network security, IAM, cloud security posture and vulnerability management.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="wrap" aria-labelledby="exp-h">
+    <div class="head">
+      <h2 id="exp-h">Experience.</h2>
+      <p>Nearly a decade across consulting, big tech delivery, and building companies.</p>
+    </div>
+    <div class="roles">
+
+      <article class="role">
+        <div><p class="when">Aug 2026 – Present</p><p class="co">Solventum</p><p class="place">Bengaluru</p></div>
+        <div class="body">
+          <div class="pos"><h3>Program Manager <span class="new">New</span></h3><p class="meta">Aug 2026 – Present</p>
+            <p>Standardising IT demand intake and programme and portfolio management.</p></div>
+        </div>
+      </article>
+
+      <article class="role">
+        <div><p class="when">Aug 2022 – Jul 2026</p><p class="co">KPMG India</p><p class="place">Bengaluru · 4 years</p></div>
+        <div class="body">
+          <div class="pos"><h3>Assistant Manager</h3><p class="meta">Apr 2024 – Jul 2026</p>
+            <p>Governed a $50M+ global IT portfolio of 45+ programmes, one of the most complex multi-workstream engagements in KPMG's energy practice.</p>
+            <ul>
+              <li>Built a Power BI executive dashboard suite for CIO and VP stakeholders, cutting escalation lead time by <strong>~40%</strong> across 12+ global teams.</li>
+              <li>Designed a RAID governance framework that reduced unresolved critical risks by <strong>30%</strong>.</li>
+              <li>Kept budget variance under <strong>1%</strong> across 8 cross-programme workstreams.</li>
+              <li>Standardised Agile and Waterfall cadences with bi-weekly portfolio health reviews.</li>
+              <li>Led workforce planning for a <strong>200+ FTE</strong> delivery ecosystem.</li>
+            </ul></div>
+          <div class="pos"><h3>Consultant</h3><p class="meta">Aug 2022 – Mar 2024</p>
+            <p>Designed and deployed PMO and Digital Transformation Office operating models for 3 programmes in hardware, IoT and enterprise IT.</p>
+            <ul>
+              <li>Governance structures that cut programme setup time by <strong>~25%</strong>.</li>
+              <li>KPI dashboards that informed quarterly board-level investment decisions.</li>
+              <li>Led RFP and proposal work contributing to a <strong>$3M+</strong> pipeline.</li>
+              <li>Co-authored thought leadership with CII and Synopsys on digital hardware innovation.</li>
+              <li>Mentored 4 junior consultants, 2 promoted within 18 months.</li>
+            </ul></div>
+        </div>
+      </article>
+
+      <article class="role">
+        <div><p class="when">Apr 2021 – Jul 2022</p><p class="co">Tech Mahindra</p><p class="place">Bengaluru</p></div>
+        <div class="body">
+          <div class="pos"><h3>Project Manager · Amazon Alexa Mobile Assistant</h3><p class="meta">Apr – Nov 2021</p>
+            <p>Program Owner for 7 Alexa feature, device and technology launches across the US, EU, India and APAC.</p>
+            <ul>
+              <li>Designed the beta governance process from scratch, lifting beta engagement by <strong>~35%</strong>.</li>
+              <li>Launch recommendation reports shaped go-to-market for 7 product lines with <strong>zero</strong> critical post-launch incidents.</li>
+              <li>Aligned Product, Engineering, Legal, QA and regional teams across 4 markets.</li>
+            </ul></div>
+          <div class="pos"><h3>Project Manager · Babcock &amp; Wilcox IT Transition</h3><p class="meta">Nov 2021 – Jul 2022</p>
+            <ul>
+              <li>Delivered 5+ enterprise IT projects up to $2M each, <strong>100%</strong> on time and on budget, reporting to the CIO.</li>
+              <li>Led the Primavera P6 to SAP migration with zero data loss.</li>
+              <li>Modernised the intranet, improving adoption by <strong>~30%</strong>.</li>
+            </ul></div>
+        </div>
+      </article>
+
+      <article class="role">
+        <div><p class="when">Apr 2019 – Apr 2021</p><p class="co">Cazzkaro</p><p class="place">Kolkata</p></div>
+        <div class="body">
+          <div class="pos"><h3>Co-Founder</h3>
+            <p>Built a bootstrapped B2C/B2B e-commerce venture to a 25-person team and a ₹50L valuation in 12 months. Recognised under Startup India, GoI MSME and the Bengal Chamber of Commerce.</p>
+            <ul>
+              <li>Launched Cazzkaro Dropship, a D2C dropshipping platform, signing <strong>15+</strong> brands in 3 months.</li>
+              <li>Owned the P&amp;L, hiring from 0 to 25, vendors and operations.</li>
+              <li>Generated <strong>~₹30L</strong> in first-year revenue.</li>
+            </ul></div>
+        </div>
+      </article>
+
+      <article class="role">
+        <div><p class="when">Feb 2017 – Mar 2019</p><p class="co">TenPi Technologies</p><p class="place">Kolkata</p></div>
+        <div class="body">
+          <div class="pos"><h3>Project Manager</h3>
+            <p>Delivered two government and World Bank-backed IoT programmes: an air pollution monitoring device and a gaze control device for assistive technology.</p>
+            <ul>
+              <li>Led a team of 10 across sensors, embedded firmware, REST APIs and apps, through to field deployment.</li>
+              <li>As a founding hire, helped grow the company from 5 to <strong>20+</strong> people in 18 months.</li>
+            </ul></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="approach" class="wrap" aria-labelledby="app-h">
+    <div class="head">
+      <h2 id="app-h">How I work.</h2>
+      <p>The strategic why and the operational how, in equal measure.</p>
+    </div>
+    <div class="split">
+      <div class="card">
+        <h3>Delivery methods</h3>
+        <p>Whatever the programme needs, often a mix.</p>
+        <div class="chips"><span class="chip">Agile</span><span class="chip">SAFe</span><span class="chip">Waterfall</span><span class="chip">Hybrid</span><span class="chip">RAID governance</span><span class="chip">Stage gates</span></div>
+      </div>
+      <div class="card">
+        <h3>Hands-on tools</h3>
+        <p>I build the reports myself.</p>
+        <div class="chips"><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Advanced Excel</span><span class="chip">Google Analytics</span><span class="chip">SAP</span><span class="chip">Primavera P6</span></div>
+      </div>
+    </div>
+    <p class="quote">The best programme managers are trusted advisors to the business, <span>not just trackers of RAG status.</span></p>
+  </section>
+
+  <section id="credentials" class="wrap" aria-labelledby="cred-h">
+    <div class="head"><h2 id="cred-h">Credentials.</h2></div>
+    <div class="split">
+      <div class="card">
+        <h3>Certifications</h3>
+        <ul class="list">
+          <li><span class="t">Certified Scrum Product Owner (CSPO)</span></li>
+          <li><span class="t">Professional Scrum Product Owner I</span></li>
+          <li><span class="t">PMP</span><span class="s">In progress</span></li>
+          <li><span class="t">Program Management Foundations</span></li>
+          <li><span class="t">Corporate Strategy</span></li>
+          <li><span class="t">Getting Started in Google Analytics</span></li>
+          <li><span class="t">Goethe-Zertifikat A1: Start Deutsch 1</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Education</h3>
+        <ul class="list">
+          <li><span class="t">Calcutta Institute of Engineering and Management<span class="sub">B.Tech, Electronics and Communications Engineering</span></span><span class="s">2012 – 2016</span></li>
+          <li><span class="t">G. D. Birla Centre for Education<span class="sub">High School, Physics, Chemistry, Biology, Mathematics</span></span><span class="s">1998 – 2012</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="wrap contact" aria-labelledby="con-h">
+    <h2 id="con-h">Let's <span class="grad">talk.</span></h2>
+    <p class="lede">Open to Senior TPM, Head of PMO, Portfolio Manager and Strategy &amp; Operations roles at big tech, high-growth scale-ups and Big 4 / Big 3 consulting firms.</p>
+    <div class="open"><span>Bengaluru, India</span><span>Hybrid or remote</span></div>
+    <div class="mail">
+      <span class="addr" id="email">sukanya.dgupta@gmail.com</span>
+      <button class="copy" id="copy-email" type="button">Copy email</button>
+    </div>
+    <div class="links">
+      <a class="more chev" href="https://www.linkedin.com/in/sukanyadg" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Sukanya Dasgupta</span><span>Bengaluru, India</span></div>
+</footer>
+
+<script>
+document.getElementById('copy-email').addEventListener('click', function(){
+  var btn=this, text=document.getElementById('email').textContent.trim();
+  function done(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email'},1800)}
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected, press ⌘C'}
+  try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+});
+</script>
+</body>
+</html>
